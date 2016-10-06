@@ -1,0 +1,26 @@
+<div class="landing center">  
+<h1 class="title-font">REGISTER</h1>
+<div>
+    <%=link_to image_tag("ic_launcher.png"), root_path %>
+</div>
+  <div class="text-center">
+      <div class="button-box">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+          <div>
+            <%= f.email_field :email, class: "form-input-field", placeholder: "Email" %>
+          </div>
+          <div>
+            <%= f.password_field :password, class: "form-input-field", placeholder: "Password" %>
+          </div>
+          <div>
+            <%= f.password_field :password_confirmation, class: "form-input-field", placeholder: "Confirm Password" %>
+          </div>
+
+          <div>
+            <%= f.submit "REGISTER", class: "btn btn-primary btn-lg btn-block"%>
+          </div>
+      <% end %>
+      </div>
+  </div>
+</div>

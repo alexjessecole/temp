@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title><%= @title %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+    <body>
+      <div id="flash">
+        <a class="close" data-dismiss="alert">&#215;</a>
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-info"%>
+          <% end %>
+      </div>
+      <%= yield %>
+      <script type="text/javascript">
+      $(document).ready(function(){
+        setTimeout(function(){
+          $('#flash').remove();
+        }, 5000);
+       })
+      </script>
+  </body>
+</html>

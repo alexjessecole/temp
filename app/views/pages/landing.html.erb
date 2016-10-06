@@ -1,0 +1,41 @@
+<% if user_signed_in? %>
+<div class="landing center">  
+<h1 class="title-font">Android Document Name Generator</h1>
+<div>
+    <%=link_to image_tag("ic_launcher.png"), root_path %>
+</div>
+  <div class="text-center">
+      <div class="button-box">
+	<%= form_tag("/landing", method: "get") do %>
+	  	<%= text_field_tag(:q, @input, class: "form-input-field", placeholder: "Document Name") %>
+		<% @title=@input %>
+	  	<%= submit_tag("Submit", class: "btn btn-primary btn-lg btn-block", style: "margin-bottom: 2%;")%> 
+	  <div class="details-box">
+      <% if @input.respond_to? :length %>
+        <% @count = @input.length %>
+        <h3 class="details-text">Document Name Length: <%=@count%></h3>
+      <%else%>
+        <h2 class="details-text">Enter a document name in the field above and click submit.</h2>
+      <% end %>
+    </div>
+  <% end %>
+	<%= link_to('LOGOUT', destroy_user_session_path, class: "label-text", :method => :delete) %>  
+   </div>
+  </div>
+</div>     
+<% else %>
+ <div class="landing center">	
+ <h1 class="title-font">Android Document Name Generator</h1>
+<div>
+    <%=link_to image_tag("ic_launcher.png"), root_path %>
+</div>
+	<div class="text-center">
+    	<div class="button-box">
+    		<p>
+    			<%= link_to "LOGIN", new_user_session_path, class: "btn btn-primary btn-lg btn-block" %>
+    			<%= link_to "REGISTER", new_user_registration_path, class: "btn btn-primary btn-lg btn-block" %>
+    		</p>
+    	</div>
+	</div>
+</div>
+<% end %>
